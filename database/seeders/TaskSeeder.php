@@ -14,15 +14,18 @@ class TaskSeeder extends Seeder
     public function run(): void
     {
         Task::create([
-            'task_name' => 'Make Add button blue.',
+            'title' => 'Make Add button blue.',
+            'description' => 'This is a test task. Make Add button blue description.',
             'status_id' => 1,
         ]);
         Task::create([
-            'task_name' => 'Make Carousel Arrows bigger.',
+            'title' => 'Make Carousel Arrows bigger.',
+            'description' => 'This is a test task. Make Carousel Arrows bigger description.',
             'status_id' => 2,
         ]);
         Task::create([
-            'task_name' => 'Make Web Images blurred.',
+            'title' => 'Make Web Images blurred.',
+            'description' => 'This is a test task. Make Web Images blurred description.',
             'status_id' => 3,
         ]);
     }
