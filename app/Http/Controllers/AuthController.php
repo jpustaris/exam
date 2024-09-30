@@ -21,22 +21,6 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
 
-    //  public function __construct(){
-    //     $this->login_max_attempt = config('config.login_max_attempt');
-    //     $this->token_expiry = config('config.token_expiry');
-    //   }
-  
-    //   private function generate_access_token($query){
-    //     $access = $query->createToken(date('Y-m-d h:i:s').'-'.$query->email);
-    //     // Manually set the expiration time
-    //     // $newExpiration = now()->addSeconds(30);
-    //     $newExpiration = now()->addDays($this->token_expiry);
-    //     $access->token->expires_at = $newExpiration;
-    //     $access->token->save();
-    //     // returns array_object to use arrow operator -> instead of accessing it by keys.
-    //     return (object) array('access_token' => $access->accessToken, 'token_expiry' => $access->token->expires_at);
-    //   }
-
     public function login(Request $request)
     {
         $request->validate([
@@ -45,9 +29,6 @@ class AuthController extends Controller
         ]);
 
         if (!Auth::attempt($request->only('email', 'password'))) {
-            // throw ValidationException::withMessages([
-            //     'email' => __('auth.failed'),
-            // ]);
             return response()->json([
                 'status' => 'failed',
                 'message' => 'Login failed',
@@ -74,6 +55,7 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
+    
     public function logout(Request $request)
     {
         $user_id = $request->user_id;

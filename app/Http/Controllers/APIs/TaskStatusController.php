@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\APIs;
 
 use Illuminate\Http\Request;
-use App\Models\Task;
+use App\Models\TaskStatus;
 use App\Http\Controllers\Controller;
 
-class TaskController extends Controller
+class TaskStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Task::with(['status'])
-        ->get();
+        $data = TaskStatus::all();
 
         return response()->json([
             'data' => $data
